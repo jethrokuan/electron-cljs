@@ -23,10 +23,11 @@
 
 (deftask dev []
   (comp
+   (watch)
    (speak)
    (cljs-repl :ids #{"renderer"})
-   (watch)
    (reload :ids #{"renderer"}
+           :ws-host "localhost"
            :on-jsload 'app.renderer/init)
    (cljs :ids #{"renderer"})
    (cljs :ids #{"main"}
